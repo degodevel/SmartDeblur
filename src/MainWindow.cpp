@@ -1,3 +1,4 @@
+#include <QWidget>
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
@@ -71,7 +72,8 @@ void MainWindow::updatePreviewImage(int deconvolutionTime) {
     progressBar->setValue(0);
     progressBar->setVisible(false);
     // Hack to force update resized pixmap
-    imageLabel->setPixmap(0);
+    QPixmap pm;
+    imageLabel->setPixmap(pm);
     imageLabel->setPixmap(QPixmap::fromImage(*outputImage));
 
     lblDeconvolutionTime->setText(" Last operation time: " + QString::number(deconvolutionTime) + " ms ");
@@ -248,7 +250,7 @@ void MainWindow::dragMoveEvent(QDragMoveEvent *event)
 
 void MainWindow::dropEvent(QDropEvent *event)
 {
-    QList<QUrl> urls = event->mimeData()->urls();
+    QList<QUrl> urls;// = event->mimeData()->urls();
     if (urls.isEmpty()) {
         return;
     }

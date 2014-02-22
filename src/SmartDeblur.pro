@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network xml
+QT       += core gui widgets network xml
 
 TARGET = SmartDeblur
 TEMPLATE = app
